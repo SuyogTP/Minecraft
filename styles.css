@@ -122,6 +122,13 @@ header p {
     font-size: 2.5em;
     text-align: center;
     margin-top: 40px;
+    img {
+    max-width: 100%; /* Make it responsive */
+    height: auto;
+    display: block;
+    margin: 20px auto; /* Center the image */
+}
+
 
 /* Footer Styling */
 footer {
