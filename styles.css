@@ -124,7 +124,7 @@ header p {
     margin-top: 40px;}
 
     img {
-    max-width: 100%; /* Make it responsive */
+    max-width: 50%; /* Make it responsive */
     height: auto;
     display: block;
     margin: 20px auto; /* Center the image */
