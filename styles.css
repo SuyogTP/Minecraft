@@ -1,0 +1,103 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Minecraft-style font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    background-color: #000;
+    font-family: 'Press Start 2P', cursive;
+    color: #0F0;
+    overflow-x: hidden;
+}
+
+header {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.minecraft-title {
+    font-size: 50px;
+    color: #FFB800;
+    text-shadow: 2px 2px 5px #FF8000;
+    letter-spacing: 2px;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #FFB800, 0 0 10px #FFB800;
+    }
+    100% {
+        text-shadow: 0 0 20px #FFB800, 0 0 30px #FFB800;
+    }
+}
+
+h2.minecraft-subtitle {
+    font-size: 35px;
+    color: #FF4000;
+    text-shadow: 1px 1px 5px #FF0000;
+    margin-bottom: 20px;
+}
+
+.minecraft-text {
+    font-size: 18px;
+    color: #AAA;
+    margin: 20px;
+    line-height: 1.5;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.footer-text {
+    font-size: 14px;
+    color: #00FF00;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 3D Scrolling Effect */
+body {
+    perspective: 1000px;
+}
+
+section.content {
+    transform: rotateX(0deg);
+    transition: transform 1s ease;
+}
+
+section.content.active {
+    transform: rotateX(10deg);
+}
+
+/* Smooth transitions for scrolling and hover */
+section.content {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.active {
+    animation: scrollMove 2s infinite;
+}
+
+@keyframes scrollMove {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(100%);
+    }
+}
