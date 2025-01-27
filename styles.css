@@ -1,103 +1,127 @@
-/* General reset */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Minecraft-style font */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
+/* Body Styling */
 body {
-    background-color: #000;
-    font-family: 'Press Start 2P', cursive;
-    color: #0F0;
-    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    padding: 20px;
 }
 
-header {
-    text-align: center;
-    margin-top: 50px;
+/* Floating Diamond Styling */
+#floating-diamond {
+    position: fixed;
+    top: 20px; /* Position it at the top */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3em; /* Initial size */
+    animation: floating 2s ease-in-out infinite;
+    z-index: 10;
 }
 
-.minecraft-title {
-    font-size: 50px;
-    color: #FFB800;
-    text-shadow: 2px 2px 5px #FF8000;
-    letter-spacing: 2px;
-    animation: glow 1.5s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
+/* Floating animation */
+@keyframes floating {
     0% {
-        text-shadow: 0 0 5px #FFB800, 0 0 10px #FFB800;
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-20px);
     }
     100% {
-        text-shadow: 0 0 20px #FFB800, 0 0 30px #FFB800;
+        transform: translateX(-50%) translateY(0);
     }
 }
 
-h2.minecraft-subtitle {
-    font-size: 35px;
-    color: #FF4000;
-    text-shadow: 1px 1px 5px #FF0000;
+/* Header Styling */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: #00b0ff;
+    font-size: 3em;
+}
+
+header p {
+    color: white;
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+/* Diamond Prices Section */
+.diamond-prices h2 {
+    color: #00b0ff;
+    font-size: 2.5em;
+    text-align: center;
     margin-bottom: 20px;
 }
 
-.minecraft-text {
-    font-size: 18px;
-    color: #AAA;
-    margin: 20px;
-    line-height: 1.5;
+.diamond-prices ul {
+    list-style-type: none;
+    padding: 0;
 }
 
+.diamond-prices li {
+    font-size: 1.5em;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.diamond-amount {
+    color: #00b0ff;
+}
+
+/* Special Offers Section */
+.special-offers h2 {
+    color: #00b0ff;
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.special-offers ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.special-offers li {
+    font-size: 1.5em;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.offer {
+    color: #00b0ff;
+}
+
+/* Combo Pack Section */
+.combo-pack h2 {
+    color: #00b0ff;
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.combo-pack p {
+    color: white;
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.combo {
+    color: #00b0ff;
+}
+
+/* Footer Styling */
 footer {
     text-align: center;
-    margin-top: 30px;
-}
-
-.footer-text {
-    font-size: 14px;
-    color: #00FF00;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* 3D Scrolling Effect */
-body {
-    perspective: 1000px;
-}
-
-section.content {
-    transform: rotateX(0deg);
-    transition: transform 1s ease;
-}
-
-section.content.active {
-    transform: rotateX(10deg);
-}
-
-/* Smooth transitions for scrolling and hover */
-section.content {
-    height: 100vh;
-    overflow: hidden;
-}
-
-.active {
-    animation: scrollMove 2s infinite;
-}
-
-@keyframes scrollMove {
-    0% {
-        opacity: 0;
-        transform: translateY(0);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(100%);
-    }
+    margin-top: 60px;
+    font-size: 1.2em;
+    color: white;
 }
