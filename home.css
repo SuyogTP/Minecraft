@@ -73,18 +73,18 @@ nav ul li a:hover {
 .hero {
     text-align: center;
     padding: 100px 20px;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 1, 0.6);
     font-size: 28px;
     font-weight: bold;
 }
 
 .games {
     text-align: center;
-    padding: 40px;
+    padding: 60px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
 }
 
 .game-card {
