@@ -1,105 +1,25 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     background: url('freefire.jpg') no-repeat center center fixed;
     background-size: cover;
     color: white;
-    background-color: black; /* Ensuring dark theme */
+    background-color: black;
 }
 
 header {
     background: rgba(0, 0, 0, 0.9);
     padding: 15px;
     text-align: center;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 15px 20px;
     background: black;
-}
-
-.menu-icon {
-    font-size: 30px;
-    cursor: pointer;
-    color: white;
-    display: block;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: none;
-    flex-direction: column;
-    background: black;
-    position: absolute;
-    top: 50px;
-    left: 0;
-    width: 100%;
-}
-
-nav ul.show {
-    display: flex;
-}
-
-nav ul li {
-    text-align: center;
-    padding: 10px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.hero {
-    text-align: center;
-    padding: 50px 20px;
-    background: rgba(0, 0, 0, 0.6);
-}
-
-.games {
-    text-align: center;
-    padding: 30px;
-}
-
-.game-card {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    display: inline-block;
-    margin: 10px;
-    border-radius: 10px;
-}
-
-.btn {
-    background: #ff4500;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-}
-
-.slideshow {
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-    position: relative;
-}
-
-.slideshow img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    opacity: 0;
-    transition: opacity 1s;
-}
-
-.active {
-    opacity: 1;
-}
+    position: fixed;
