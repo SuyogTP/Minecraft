@@ -5,22 +5,49 @@ body {
     background: url('freefire.jpg') no-repeat center center fixed;
     background-size: cover;
     color: white;
+    background-color: black; /* Ensuring dark theme */
 }
 
 header {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     padding: 15px;
     text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: black;
+}
+
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    display: block;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
+    display: none;
+    flex-direction: column;
+    background: black;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+}
+
+nav ul.show {
+    display: flex;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 15px;
+    text-align: center;
+    padding: 10px;
 }
 
 nav ul li a {
