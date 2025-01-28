@@ -11,6 +11,26 @@ body {
     background-color: black;
     color: white;
     padding: 20px;
+    background-image: url('freefire2.jpeg'); /* Set background image */
+    background-size: cover; /* Cover the entire screen */
+    background-position: center; /* Center the background */
+    background-attachment: fixed; /* Fix the background position while scrolling */
+}
+
+/* Button Styling */
+button {
+    background-color: #00b0ff;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #008bb2;
 }
 
 /* Floating Diamond Styling */
@@ -117,24 +137,23 @@ header p {
 .combo {
     color: #00b0ff;
 }
+
 .QR h2 {
     color: #00b0ff;
     font-size: 2.5em;
     text-align: center;
-    margin-top: 40px;}
+    margin-top: 40px;
+}
 
-    img {
+img {
     max-width: 50%; /* Make it responsive */
     height: auto;
     display: block;
     margin: 20px auto; /* Center the image */
 }
 
-
 /* Footer Styling */
 footer {
     text-align: center;
     margin-top: 60px;
-    font-size: 1.2em;
-    color: white;
-}
+    f
