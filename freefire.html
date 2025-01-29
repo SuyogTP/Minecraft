@@ -42,7 +42,37 @@
         <button onclick="submitOrder()">Submit Order</button>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        let cart = [];
+
+        function addToCart() {
+            const diamond = document.getElementById("diamond").value;
+            cart.push(diamond);
+            document.getElementById("cart").innerHTML = cart.map(item => `<li>${item} Diamonds</li>`).join('');
+        }
+
+        function submitOrder() {
+            const uid = document.getElementById("uid").value;
+            const username = document.getElementById("username").value;
+            
+            if (!uid || !username || cart.length === 0) {
+                alert("Please fill in all fields and add at least one item to the cart.");
+                return;
+            }
+            
+            fetch("http://localhost:3000/submit-order", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ uid, username, cart })
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                cart = [];
+                document.getElementById("cart").innerHTML = "";
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
 </body>
 </html>
-
