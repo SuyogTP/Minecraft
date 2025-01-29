@@ -3,52 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Fire Diamond Sales</title>
+    <title>Diamond Store</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Floating Diamond -->
-    <div id="floating-diamond">💎</div>
+    <div class="container">
+        <h1>Diamond Purchase</h1>
+        <form id="diamond-form">
+            <label for="uid">Enter Your UID:</label>
+            <input type="text" id="uid" required>
+            
+            <label for="username">Enter Your Username:</label>
+            <input type="text" id="username" required>
+            
+            <label for="diamond">Select Diamond Pack:</label>
+            <select id="diamond">
+                <option value="25">25 Diamonds</option>
+                <option value="50">50 Diamonds</option>
+                <option value="100">100 Diamonds</option>
+                <option value="500">500 Diamonds</option>
+            </select>
+            
+            <button type="button" onclick="addToCart()">Add to Cart</button>
+        </form>
 
-    <header>
-        <h1>Free Fire Diamond Sales</h1>
-        <p>Buy Diamonds at the Best Prices!</p>
-    </header>
-    <section class="diamond-prices">
-        <h2>Our Prices</h2>
-        <ul>
-            <li><span class="diamond-amount">25 Diamonds 💎</span> = Rs 28</li>
-            <li><span class="diamond-amount">50 Diamonds 💎</span> = Rs 55</li>
-            <li><span class="diamond-amount">115 Diamonds 💎</span> = Rs 105</li>
-            <li><span class="diamond-amount">240 Diamonds 💎</span> = Rs 210</li>
-            <li><span class="diamond-amount">610 Diamonds 💎</span> = Rs 525</li>
-            <li><span class="diamond-amount">1240 Diamonds 💎</span> = Rs 1050</li>
-        </ul>
-    </section>
-    <section class="special-offers">
-        <h2>Special Offers</h2>
-        <ul>
-            <li><span class="offer">Weekly Diamond Pack</span> = Rs 210</li>
-            <li><span class="offer">Monthly Diamond Pack</span> = Rs 1050</li>
-            <li><span class="offer">Level-up Diamond Pack</span> = Rs 210</li>
-        </ul>
-    </section>
-    <section class="combo-pack">
-        <h2>!! COMBO Pack Special For You !!</h2>
-        <p><span class="combo">Weekly & Monthly Combo</span> = Rs 1200 Only!</p>
-    </section>
-     <section class="QR">
-         <h2>payment method</h2>
-         <ul>
-            <h1><li>QR payment </li></h1> 
-         </ul>
-         <img src="Screenshot_20250127_193745~2.jpg" alt="QR Scanner" />
-     </section>
-    <footer>
+        <h2>Cart</h2>
+        <ul id="cart"></ul>
         
-        <p>    NOTICE     ( only uid and Username is needed )
-            Get Your Diamonds Now!!</p>
-    </footer>
+        <button onclick="submitOrder()">Submit Order</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
