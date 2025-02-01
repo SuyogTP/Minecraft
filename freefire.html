@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diamond Store</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -60,25 +74,38 @@
                 return;
             }
             
-            // Update the URL with your new Web App URL
             fetch("https://script.google.com/macros/s/AKfycbylLCWEre4BbNicc9TlvbUzOSEweFOOdK-s8wDy_0kgNl73XyHH9EctUDmXHWjy-F1BWw/exec", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    uid: uid,
-                    username: username,
-                    cart: cart
-                })
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ uid, username, cart })
             })
             .then(response => response.text())
             .then(data => {
-                alert(data);
+                showPopup("✅ Order submitted successfully! Thank you for your purchase.");
                 cart = [];
                 document.getElementById("cart").innerHTML = "";
+                
+                // Refresh the page after 3 seconds
+                setTimeout(() => {
+                    location.reload();
+                }, 3000);
             })
-            .catch(error => console.error("Error:", error));
+            .catch(error => {
+                showPopup("❌ There was an issue submitting the order. Please try again later.");
+                console.error("Error:", error);
+            });
+        }
+
+        // Function to show popup message
+        function showPopup(message) {
+            const popup = document.createElement("div");
+            popup.className = "popup";
+            popup.innerText = message;
+            document.body.appendChild(popup);
+            
+            setTimeout(() => {
+                popup.remove();
+            }, 2500); // Remove popup after 2.5 seconds
         }
     </script>
 </body>
