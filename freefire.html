@@ -1,94 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diamond Store</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Free Fire Diamond Sales</h1>
-        <p>Buy Diamonds at the Best Prices!</p>
-        
-        <h2>Our Prices</h2>
-        <form id="diamond-form">
-            <label for="uid">Enter Your UID:</label>
-            <input type="text" id="uid" required>
-            
-            <label for="username">Enter Your Username:</label>
-            <input type="text" id="username" required>
-            
-            <label for="diamond">Select Diamond Pack:</label>
-            <select id="diamond">
-                <option value="28">25 Diamonds 💎 = Rs 30</option>
-                <option value="55">50 Diamonds 💎 = Rs 60</option>
-                <option value="110">115 Diamonds 💎 = Rs 110</option>
-                <option value="220">240 Diamonds 💎 = Rs 220</option>
-                <option value="535">610 Diamonds 💎 = Rs 535</option>
-                <option value="1060">1240 Diamonds 💎 = Rs 1060</option>
-                <option value="260">Weekly Diamond Pack = Rs 220</option>
-                <option value="1060">Monthly Diamond Pack = Rs 1060</option>
-                <option value="2030">Level-up Diamond Pack = Rs 2030</option>
-                <option value="1220">Weekly & Monthly Combo = Rs 1220 Only!</option>
-            </select>
-            
-            <button type="button" onclick="addToCart()">Add to Cart</button>
-        </form>
+function submitOrder() {
+    const uid = document.getElementById("uid").value;
+    const username = document.getElementById("username").value;
+    const diamond = document.getElementById("diamond").value;
+    
+    if (!uid || !username || !diamond) {
+        alert("Please fill in all fields.");
+        return;
+    }
 
-        <h2>Cart</h2>
-        <ul id="cart"></ul>
-        
-        <button onclick="submitOrder()">Submit Order</button>
-    </div>
-
-    <script>
-        let cart = [];
-
-        function addToCart() {
-            const diamond = document.getElementById("diamond").value;
-            cart.push(diamond);
-            document.getElementById("cart").innerHTML = cart.map(item => `<li>${item} Diamonds</li>`).join('');
+    // Send data to the Google Apps Script Web App
+    fetch('https://script.google.com/macros/s/AKfycbylLCWEre4BbNicc9TlvbUzOSEweFOOdK-s8wDy_0kgNl73XyHH9EctUDmXHWjy-F1BWw/exec', {
+        method: 'POST',
+        body: JSON.stringify({
+            uid: uid,
+            username: username,
+            diamond: diamond
+        }),
+        headers: {
+            'Content-Type': 'application/json'
         }
-
-        function submitOrder() {
-            const uid = document.getElementById("uid").value;
-            const username = document.getElementById("username").value;
-            const diamond = document.getElementById("diamond").value;
-            
-            if (!uid || !username || !diamond) {
-                alert("Please fill in all fields.");
-                return;
-            }
-
-            // Send data to the Google Apps Script Web App
-            fetch('https://script.google.com/macros/s/AKfycbylLCWEre4BbNicc9TlvbUzOSEweFOOdK-s8wDy_0kgNl73XyHH9EctUDmXHWjy-F1BWw/exec', {
-                method: 'POST',
-                body: JSON.stringify({
-                    uid: uid,
-                    username: username,
-                    diamond: diamond
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert(data); // Alert the user with the response from Google Apps Script
-                // Reset the form fields and cart
-                document.getElementById("uid").value = '';
-                document.getElementById("username").value = '';
-                document.getElementById("diamond").value = '';
-                cart = [];
-                document.getElementById("cart").innerHTML = "";
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an issue submitting the order. Please try again later.');
-            });
-        }
-    </script>
-</body>
-</html>
-
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data); // Alert the user with the response from Google Apps Script
+        // Reset the form fields and cart
+        document.getElementById("uid").value = '';
+        document.getElementById("username").value = '';
+        document.getElementById("diamond").value = '';
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('There was an issue submitting the order. Please try again later.');
+    });
+}
