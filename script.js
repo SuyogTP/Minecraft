@@ -1,14 +1,36 @@
-// Script to change diamond size on scroll
-window.addEventListener('scroll', function() {
-    const diamond = document.getElementById('floating-diamond');
-    const scrollY = window.scrollY;
-
-    // Change size based on scroll position
-    const scaleFactor = 1 + (scrollY / 1000); // Increase size as you scroll down
-    diamond.style.transform = `translateX(-50%) scale(${scaleFactor})`;
-
-    // If scroll is at the top, reset size
-    if (scrollY === 0) {
-        diamond.style.transform = `translateX(-50%) scale(1)`;
+function submitOrder() {
+    const uid = document.getElementById("uid").value;
+    const username = document.getElementById("username").value;
+    const diamond = document.getElementById("diamond").value;
+    
+    if (!uid || !username || !diamond) {
+        alert("Please fill in all fields.");
+        return;
     }
-});
+
+    // Send data to the Google Apps Script Web App
+    fetch('https://script.google.com/macros/s/AKfycbylLCWEre4BbNicc9TlvbUzOSEweFOOdK-s8wDy_0kgNl73XyHH9EctUDmXHWjy-F1BWw/exec', {
+        method: 'POST',
+        body: JSON.stringify({
+            uid: uid,
+            username: username,
+            diamond: diamond
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data); // Alert the user with the response from Google Apps Script
+        // Reset the form fields and cart
+        document.getElementById("uid").value = '';
+        document.getElementById("username").value = '';
+        document.getElementById("diamond").value = '';
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('There was an issue submitting the order. Please try again later.');
+    });
+}
+
